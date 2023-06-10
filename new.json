@@ -59,7 +59,7 @@
         "addressPrefix": "176.16.0.0/16",
         "subnetName": "default",
         "subnetPrefix": "176.16.0.0/24",
-        "labCustomScriptUri": "https://handsonlab035.blob.core.windows.net/ree/login.ps1",
+        "labCustomScriptUri": "https://github.com/kelzms8/test/blob/435825fd9165d6c5b160013c1b2f18021b5cbb44/new.ps1",
 
         "hostingPlanName": "[concat(resourceGroup().name, '-asp-fn')]",
 		"functionAppName": "[concat('contoso-func-', uniqueString(resourceGroup().id))]",
