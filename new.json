@@ -56,6 +56,7 @@
         "labPublicIpAddressName": "[concat(variables('labVirtualMachineName'), '-ip')]",
 
         "virtualNetworkName": "[concat(resourceGroup().name, '-vnet')]",
+
         "addressPrefix": "176.16.0.0/16",
         "subnetName": "default",
         "subnetPrefix": "176.16.0.0/24",
