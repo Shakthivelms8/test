@@ -52,7 +52,7 @@
         "labVirtualMachineName": "LabVM",
         "labNetworkSecurityGroupName": "[concat(variables('labVirtualMachineName'), '-nsg')]",
         "labNetworkInterfaceName": "[concat(variables('labVirtualMachineName'), '-nic')]",
-        "publicIpAddressDNSName": "vgmart",
+        "publicIpAddressDNSName": "vogmart",
         "labPublicIpAddressName": "[concat(variables('labVirtualMachineName'), '-ip')]",
 
         "virtualNetworkName": "[concat(resourceGroup().name, '-vnet')]",
