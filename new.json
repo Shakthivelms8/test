@@ -11,7 +11,7 @@
                 "description": "The password must be between 8 and 128 characters in length and must contain at least one number, one non-alphanumeric character, and one upper or lower case letter. Default value is Password.1!!"
             }},
         "adminUsername": {
-            "type": "String"
+            "type": "string"
           },
           "AzureUserName": {
             "type": "string"
@@ -26,7 +26,7 @@
             "type": "string"
           },
           "azuserobjectid": {
-            "type": "String",
+            "type": "string",
             "metadata": {
                 "description": "The Object Id associated with the account you used to sign into the Azure portal. Retrieve this using the Azure CLI and 'az ad signed-in-user show --query objectId -o tsv'."
             }
@@ -52,15 +52,14 @@
         "labVirtualMachineName": "LabVM",
         "labNetworkSecurityGroupName": "[concat(variables('labVirtualMachineName'), '-nsg')]",
         "labNetworkInterfaceName": "[concat(variables('labVirtualMachineName'), '-nic')]",
-        "publicIpAddressDNSName": "vogmart",
+        "publicIpAddressDNSName": "iooo",
         "labPublicIpAddressName": "[concat(variables('labVirtualMachineName'), '-ip')]",
 
         "virtualNetworkName": "[concat(resourceGroup().name, '-vnet')]",
-
         "addressPrefix": "176.16.0.0/16",
         "subnetName": "default",
         "subnetPrefix": "176.16.0.0/24",
-        "labCustomScriptUri": "https://github.com/kelzms8/test/blob/435825fd9165d6c5b160013c1b2f18021b5cbb44/new.ps1",
+        "labCustomScriptUri": "https://handsonlab035.blob.core.windows.net/ree/login.ps1",
 
         "hostingPlanName": "[concat(resourceGroup().name, '-asp-fn')]",
 		"functionAppName": "[concat('contoso-func-', uniqueString(resourceGroup().id))]",
@@ -120,7 +119,7 @@
             }
         },
         {
-            "type": "microsoft.insights/components",
+            "type": "Microsoft.insights/components",
             "apiVersion": "2020-02-02-preview",
             "name": "[variables('functionAppInsights')]",
             "location": "[variables('location')]",
@@ -208,8 +207,8 @@
             "properties": {
                 "replicaCount": 1,
                 "partitionCount": 1,
-                "hostingMode": "Default",
-                "publicNetworkAccess": "Enabled",
+                "hostingMode": "default",
+                "publicNetworkAccess": "enabled",
                 "networkRuleSet": {
                     "ipRules": []
                 }
@@ -694,6 +693,24 @@
         "adminPassword": {
             "type": "string",
             "value": "[parameters('adminPassword')]"
+        },
+            "adminUsername": {
+            "type": "string",
+            "value": "demo"
+            },
+        
+            "LABVM Admin Username": {
+              "type": "string",
+              "value": "[parameters('adminUsername')]"
+            },
+            "LABVM Admin Password": {
+              "type": "string",
+              "value": "[parameters('adminPassword')]"
+            },
+            "LABVM DNS Name": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('labpublicIpAddressName'))).dnsSettings.fqdn]"
+            }
+          }
         }
-    }
-}
+    
